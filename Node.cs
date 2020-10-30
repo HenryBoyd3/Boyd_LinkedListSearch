@@ -47,7 +47,7 @@ namespace Boyd_LinkedListSearch
 
             //I don't know if I should move this to its own function becuse it is never repeated but it is also in the constrotor
             //and I think that should have less inside of it
-            if (Gender == "M" && mostPopMale == null) 
+            if (Gender == "M" && mostPopMale == null)
             {
                 mostPopMale = this;
                 totalMaleNodes++;
@@ -57,7 +57,7 @@ namespace Boyd_LinkedListSearch
                 mostPopMale = this;
                 totalMaleNodes++;
             }
-            else if (Gender == "M") 
+            else if (Gender == "M")
             {
                 totalMaleNodes++;
             }
@@ -69,7 +69,7 @@ namespace Boyd_LinkedListSearch
             }
             else if (Gender == "F" && Pop > mostPopFemale.Data.popularity)
             {
-                mostPopFemale = this; 
+                mostPopFemale = this;
                 totalFemaleNodes++;
             }
             else if (Gender == "F")
@@ -82,6 +82,13 @@ namespace Boyd_LinkedListSearch
             privous = null;
             totalNodes++;
             Data = data;
+        }
+
+        public string getUserInfo()
+        {
+             string nameInfo = string.Format("This persons Name is {0}, their gender is {1} and their Popularity is {2}",
+                    Data.name, Data.genders, Data.popularity);
+            return nameInfo;
         }
 
         public string TotalNodes()

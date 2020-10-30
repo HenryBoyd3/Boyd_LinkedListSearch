@@ -9,7 +9,7 @@ namespace Boyd_LinkedListSearch
     {
         Stopwatch timer = new Stopwatch();
         public int nodesMovedThrough { get; set; }
-        public void startTimer() 
+        public void startTimer() //I think I could have made this a property if I wanted to get rid of () but I forget
         {
             timer.Start();
         }
@@ -20,11 +20,12 @@ namespace Boyd_LinkedListSearch
         public string outputTime()
         {
             TimeSpan total = timer.Elapsed;
-            string formatedTime = string.Format(" Minutes {0:00} Seconds {1:00} Milliseconds {2:00} and Total nodes" +
+            string formatedTime = string.Format(" Minutes {0:00} Seconds {1:00} Milliseconds {2} \nTotal nodes" +
                 " moved through is to try to find this name was {3}", 
-                total.Minutes, total.Seconds, total.Milliseconds, nodesMovedThrough ); 
+                total.Minutes, total.Seconds, total.TotalMilliseconds, nodesMovedThrough );
+            timer.Reset();
 
-            return "time ran"+ formatedTime; 
+            return formatedTime; 
         }
         
 
