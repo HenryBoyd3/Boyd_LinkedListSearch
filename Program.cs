@@ -103,7 +103,7 @@ namespace Boyd_LinkedListSearch
             string gender = getUserGender();
             Console.WriteLine("Please enter how popular the name is using numbers.");
             int popularity = parseinput();
-            Node userAdded = List.search(name);
+            Node userAdded = List.search(name, gender);
             //if name entered did not exist
             if (userAdded == null)
             {
@@ -115,21 +115,26 @@ namespace Boyd_LinkedListSearch
             }
             else if (userAdded != null)//if name does exist
             {
-                Console.WriteLine("that name is currently in the list, would you like to add it with a suffex of _1? \n press y if you want to add them");
 
-                if (Console.ReadKey().Key == ConsoleKey.Y)
-                {
-                    Console.WriteLine(name + " will be entered with _1 suffex thank you for your response");
-                    name = name + "_1";
-                    timer.startTimer();
-                    List.add(name, gender, popularity);
-                    timer.stopTimer();
-                    Console.WriteLine("time taken to add this node with suffex was " + timer.outputTime());
-                }
-                else
-                { 
-                    Console.WriteLine(name +" was not added with the suffex");
-                }
+                
+                    Console.WriteLine("that name is currently in the list, would you like to add it with a suffex of _1? \n press y if you want to add them");
+
+                    if (Console.ReadKey().Key == ConsoleKey.Y)
+                    {
+                        Console.WriteLine(name + " will be entered with _1 suffex thank you for your response");
+                        name = name + "_1";
+                        timer.startTimer();
+                        List.add(name, gender, popularity);
+                        timer.stopTimer();
+                        Console.WriteLine("time taken to add this node with suffex was " + timer.outputTime());
+                    }
+                    else
+                    {
+                        Console.WriteLine(name + " was not added with the suffex");
+                    }
+                    return;
+                
+
             }
         }
 

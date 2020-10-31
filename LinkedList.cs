@@ -13,15 +13,12 @@ namespace Boyd_LinkedListSearch
        private  Node tail = null;
        private stopwatch sw; 
 
-
-
         public LinkedList(stopwatch stopwatch)
         {
             MakeAlphlist();
             addList();
             sw = stopwatch;
         }
-
 
         public Node add(string Name, string Gender, int Pop)
         {
@@ -78,8 +75,6 @@ namespace Boyd_LinkedListSearch
             return null;
         }
 
- 
-
         public Node search(string Letters) 
         {
             sw.nodesMovedThrough = 0;
@@ -120,6 +115,57 @@ namespace Boyd_LinkedListSearch
                     }
 
                     if (currentNode.Data.name.CompareTo(Letters.ToUpper()) == 0)
+                    {
+                        return currentNode;
+                    }
+
+                    currentNode = currentNode.next;
+                }
+            }
+
+            return null;
+
+        }
+        public Node search(string Letters, string gender)
+        {
+            sw.nodesMovedThrough = 0;
+            Letters = Letters.ToUpper();
+            Node mainLetter = FindFirstLetterGroup(Letters[0].ToString());
+            Node currentNode = null;
+            if (Letters[1].ToString().CompareTo("M") > 0)
+            {
+                currentNode = mainLetter.lastNameofLetter;
+                while (currentNode != null)
+                {
+                    sw.nodesMovedThrough++;
+                    if (currentNode == null)
+                    {
+
+                        return null;
+                    }
+
+                    if (currentNode.Data.name.CompareTo(Letters.ToUpper()) == 0 && currentNode.Data.genders.CompareTo(gender.ToUpper()) == 0)
+                    {
+
+                        return currentNode;
+                    }
+
+                    currentNode = currentNode.privous;
+                }
+            }
+            else
+            {
+                currentNode = mainLetter.firstNameofLetter;
+                while (currentNode != null)
+                {
+                    sw.nodesMovedThrough++;
+                    if (currentNode == null)
+                    {
+
+                        return null;
+                    }
+
+                    if (currentNode.Data.name.CompareTo(Letters.ToUpper()) == 0 && currentNode.Data.genders.CompareTo(gender.ToUpper()) == 0)
                     {
                         return currentNode;
                     }
